@@ -1,80 +1,184 @@
 package ss1_java.exercise;
 
 import java.util.Scanner;
+
 public class ReadNumberss {
     public static void main(String[] args) {
+        System.out.println("Nhập số cần đọc");
         Scanner input = new Scanner(System.in);
-        System.out.println("Xin mời nhập số");
         int number = input.nextInt();
-        if (number > 0 && number < 20) {
+        if (number < 10 && number >= 0) {
             switch (number) {
+                case 0:
+                    System.out.println("zero");
+                    break;
                 case 1:
-                    System.out.println("One");
+                    System.out.println("one");
                     break;
                 case 2:
-                    System.out.println("Two");
+                    System.out.println("two");
                     break;
                 case 3:
-                    System.out.println("Three");
+                    System.out.println("three");
                     break;
                 case 4:
-                    System.out.println("Four");
+                    System.out.println("four");
                     break;
                 case 5:
-                    System.out.println("Five");
+                    System.out.println("five");
                     break;
                 case 6:
-                    System.out.println("Six");
+                    System.out.println("six");
                     break;
                 case 7:
-                    System.out.println("Seven");
+                    System.out.println("seven");
                     break;
                 case 8:
-                    System.out.println("Eight");
+                    System.out.println("eight");
                     break;
                 case 9:
-                    System.out.println("Night");
-                    break;
-                case 10:
-                    System.out.println("Ten");
-                    break;
-                case 11:
-                    System.out.println("Eleven");
-                    break;
-                case 12:
-                    System.out.println("Twelve");
-                    break;
-                case 13:
-                    System.out.println("Thirteen");
-                    break;
-                case 14:
-                    System.out.println("Fourteen");
-                    break;
-                case 15:
-                    System.out.println("Fifteen");
-                    break;
-                case 16:
-                    System.out.println("Sixteen");
-                    break;
-                case 17:
-                    System.out.println("Seventeen");
-                    break;
-                case 18:
-                    System.out.println("Eighteen");
-                    break;
-                case 19:
-                    System.out.println("Nineteen");
+                    System.out.println("nine");
                     break;
 
             }
-        }else if (number > 20 && number < 100){
-            switch (number%10){
+        } else if (number < 20) {
+            switch (number % 10) {
                 case 0:
-                    System.out.println("Twenty");
+                    System.out.println("ten");
                     break;
                 case 1:
-                    System.out.println("Tw");
+                    System.out.println("eleven");
+                    break;
+                case 2:
+                    System.out.println("twelve");
+                    break;
+                case 3:
+                    System.out.println("thirteen");
+                    break;
+                case 4:
+                    System.out.println("fourteen");
+                    break;
+                case 5:
+                    System.out.println("fifteen");
+                    break;
+                case 6:
+                    System.out.println("sixteen");
+                    break;
+                case 7:
+                    System.out.println("seventeen");
+                    break;
+                case 8:
+                    System.out.println("eighteen");
+                    break;
+                case 9:
+                    System.out.println("nineteen");
+                    break;
             }
+        } else if (number < 1000) {
+            String dozen;
+            String units;
+            String hundreds;
+
+            switch (number / 100) {
+                case 1:
+                    hundreds = "onehundreds";
+                    break;
+                case 2:
+                    hundreds = "twohundreds";
+                    break;
+                case 3:
+                    hundreds = "threehundreds";
+                    break;
+                case 4:
+                    hundreds = "fourhundreds";
+                    break;
+                case 5:
+                    hundreds = "fivehundreds";
+                    break;
+                case 6:
+                    hundreds = "sixhundreds";
+                    break;
+                case 7:
+                    hundreds = "sevenhundreds";
+                    break;
+                case 8:
+                    hundreds = "eighthundreds";
+                    break;
+                case 9:
+                    hundreds = "ninehundreds";
+                    break;
+
+                default:
+                    hundreds = "";
+
+            }
+            switch ((number % 100) / 10) {
+                case 1:
+                    dozen = "onety";
+                    break;
+                case 2:
+                    dozen = "twenty";
+                    break;
+                case 3:
+                    dozen = "thirty";
+                    break;
+                case 4:
+                    dozen = "fourty";
+                    break;
+                case 5:
+                    dozen = "fifty";
+                    break;
+                case 6:
+                    dozen = "sixty";
+                    break;
+                case 7:
+                    dozen = "seventy";
+                    break;
+                case 8:
+                    dozen = "eightty";
+                    break;
+                case 9:
+                    dozen = "ninety";
+                    break;
+                default:
+                    dozen = "";
+            }
+            switch ((number % 100) % 10) {
+                case 1:
+                    units = "one";
+                    break;
+                case 2:
+                    units = "two";
+                    break;
+                case 3:
+                    units = "three";
+                    break;
+                case 4:
+                    units = "four";
+                    break;
+                case 5:
+                    units = "five";
+                    break;
+                case 6:
+                    units = "six";
+                    break;
+                case 7:
+                    units = "seven";
+                    break;
+                case 8:
+                    units = "eight";
+                    break;
+                case 9:
+                    units = "nine";
+                    break;
+
+                default:
+                    units = "";
+
+            }
+            if (!hundreds.equals("") || !dozen.equals("") || !units.equals(""))
+                System.out.printf("The  '%d' is %s ", number, hundreds + " " + dozen + " " + " " + units);
+            else System.out.print("Invalid input!");
         }
     }
 }
