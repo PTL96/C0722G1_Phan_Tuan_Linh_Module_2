@@ -1,4 +1,4 @@
-package ss6_Inheritance.exrcise2;
+package ss6_Inheritance.exercise2;
 
 import java.util.Arrays;
 

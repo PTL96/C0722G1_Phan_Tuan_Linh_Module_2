@@ -1,4 +1,4 @@
-package ss6_Inheritance.exrcise1;
+package ss6_Inheritance.exercise1;
 
 public class Circle {
     private double radius = 1;
