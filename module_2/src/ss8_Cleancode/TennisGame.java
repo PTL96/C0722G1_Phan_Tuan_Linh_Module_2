@@ -1,3 +1,5 @@
+package ss8_Cleancode;
+
 public class TennisGame {
 
     public static final String LOVE = "Love";
