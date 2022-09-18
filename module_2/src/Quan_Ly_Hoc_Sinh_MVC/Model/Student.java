@@ -1,7 +1,6 @@
 package Quan_Ly_Hoc_Sinh_MVC.Model;
     public class Student extends Person {
         private String nameClass;
-        //wrapper class
         private double score;
 
         public Student(String code, String name, Boolean gender, String nameClass, double score) {
@@ -36,9 +35,8 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
 
         @Override
         public String toString() {
-            return "Student{" +
-                    "nameClass='" + nameClass + '\'' +
-                    ", score=" + score +
-                    "} " + super.toString();
+            return "Student: " + " Mã học sinh "+getCode()+ ", Tên học sinh "+getName()+", Lớp "
+                    +getNameClass()+", Điểm "+getScore();
+
         }
     }

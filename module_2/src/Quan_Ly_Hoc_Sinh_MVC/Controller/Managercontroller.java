@@ -7,6 +7,7 @@ public class Managercontroller {
     private static final TeacherController teacherController = new TeacherController();
 
     private static final Scanner scanner = new Scanner(System.in);
+
     public static void menuManager() {
         while (true) {
             System.out.println("-----------------------------------------------------------");
@@ -24,7 +25,6 @@ public class Managercontroller {
                     break;
 
                 case 3:
-//                    System.exit(0);
                     return;
             }
         }

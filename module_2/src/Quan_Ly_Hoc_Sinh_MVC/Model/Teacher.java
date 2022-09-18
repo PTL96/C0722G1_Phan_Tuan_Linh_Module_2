@@ -29,8 +29,8 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "specialize='" + specialize + '\'' +
-                '}';
+        return "Teacher: " +"Mã giáo viên: "+getCode()+", Tên giáo viên: "+ getName()+", Giới tính: "
+                +getGender()+", Chuyên ngành: "+getSpecialize();
+
     }
 }

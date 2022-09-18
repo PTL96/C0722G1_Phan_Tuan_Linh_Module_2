@@ -1,6 +1,6 @@
 package Quan_Ly_Hoc_Sinh_MVC.Model;
 
-public class Person {
+public abstract class Person {
         private String code;
         private String name;
         private Boolean gender;
