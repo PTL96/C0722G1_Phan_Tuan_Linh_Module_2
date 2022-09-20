@@ -1,7 +1,7 @@
 package Quan_ly_phuong_tien_giao_thong_MVC.Controller;
 
 import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ICar;
-import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ql.CarSevice;
+import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.impl.CarSevice;
 
 import java.util.Scanner;
 

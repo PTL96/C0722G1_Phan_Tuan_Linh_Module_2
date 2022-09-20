@@ -1,7 +1,7 @@
 package Quan_ly_phuong_tien_giao_thong_MVC.Controller;
 
 import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ITruck;
-import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ql.TruckSevice;
+import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.impl.TruckSevice;
 
 import java.util.Scanner;
 

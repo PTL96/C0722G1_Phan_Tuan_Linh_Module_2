@@ -1,7 +1,7 @@
 package Quan_ly_phuong_tien_giao_thong_MVC.Controller;
 
 import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.IMotorcycle;
-import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ql.MotorcycleSevice;
+import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.impl.MotorcycleSevice;
 
 import java.util.Scanner;
 

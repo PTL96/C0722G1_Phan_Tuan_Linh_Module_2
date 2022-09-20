@@ -48,6 +48,7 @@ public class StudenSevice implements IStudentSevice {
         }
     }
 
+
     public Student infoStudent() {
         System.out.print("Mời bạn nhập mã học sinh: ");
         String code = scanner.nextLine();
@@ -70,5 +71,8 @@ public class StudenSevice implements IStudentSevice {
         Student student;
         student = new Student(code,name,gender,nameClass,score);
         return student;
+
     }
-}
+
+    }
+

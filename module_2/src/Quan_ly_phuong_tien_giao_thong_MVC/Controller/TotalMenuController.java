@@ -11,11 +11,11 @@ public class TotalMenuController {
 
     public static void menuTotal() {
         while (true) {
-            System.out.println("************* - CHÀO MỪNG ĐẾN VỚI DANH SÁCH QUẢN LÝ XE CỦA LINH - ************");
-            System.out.println("Chào mừng bạn đến với chương trình quản lý xe của Tuấn Linh");
+            System.out.println("************* - CHÀO MỪNG ĐẾN VỚI DANH SÁCH QUẢN LÝ XE CỦA TUẤN LINH - ************");
             System.out.println("1. Ấn 1 để quản lý Car");
             System.out.println("2. Ấn 2 để quản lý xe tải");
             System.out.println("3. Ấn 3 để quản lý xe Mô Tô");
+            System.out.println("4. Ấn 4 để thoát khỏi Menu");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:

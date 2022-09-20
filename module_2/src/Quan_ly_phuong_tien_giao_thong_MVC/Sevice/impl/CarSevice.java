@@ -1,4 +1,4 @@
-package Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ql;
+package Quan_ly_phuong_tien_giao_thong_MVC.Sevice.impl;
 
 import Quan_ly_phuong_tien_giao_thong_MVC.Model.Car;
 import Quan_ly_phuong_tien_giao_thong_MVC.Sevice.ICar;
