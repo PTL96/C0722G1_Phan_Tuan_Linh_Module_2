@@ -1,58 +1,41 @@
 package ss11_Stack_Queue.exercice5;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
 import java.util.Stack;
 
-public class CheckBrackets {
+class Bracket {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập biểu thức cần kiểm tra");
-        String expression = scanner.nextLine();
-        Stack<String> stack = new Stack<>();
-        Queue<String> queue = new LinkedList<>();
-        String[] arrays = expression.split("");
-        for (int i = 0; i < arrays.length; i++) {
-            if (arrays[i].equals(")") || arrays[i].equals("(")) {
-                stack.add(arrays[i]);
-                queue.offer(arrays[i]);
+        String str = "s * (s – a) * (s – b) * (s – c)   ";
+        String[] strArr = str.split("");
+        Stack<String> stack1 = new Stack<>();
+        boolean check = true;
+        String left = "";
+
+        for (int i = 0; i < strArr.length; i++) {
+            if (strArr[i].equals("(")) {
+                stack1.push(strArr[i]);
+            } else if (strArr[i].equals(")")) {
+                if (stack1.isEmpty()) {
+                    check = false;
+                    break;
+                } else {
+                    left = stack1.pop();
+                    if (!left.equals("(") || !strArr[i].equals(")")) {
+                        check = false;
+                        break;
+                    }
+                }
+            }
+            if (i == strArr.length - 1) {
+                check = stack1.isEmpty();
             }
         }
-        int size = stack.size();
-        boolean checks;
 
-        for (int i = 0; i < size; i++) {
-            if (!stack.pop().equals(queue.poll())) {
-                checks = false;
-                break;
-
-            }
-            checks =true;
-
-        }
-        if (checks) {
-            System.out.println("Dung");
+        if (check) {
+            System.out.println("Đúng");
         } else {
             System.out.println("Sai");
 
         }
     }
 }
-
-//       char temp;
-
-
-//        for (int i = 0; i < expression.length(); i++) {
-//            temp = expression.charAt(i);
-//            if (temp == '(') {
-//                stack.push(temp);
-//            } else if (temp == ')') {
-//                stack.push(temp);
-//
-//
-//            }
-
-
-
-
