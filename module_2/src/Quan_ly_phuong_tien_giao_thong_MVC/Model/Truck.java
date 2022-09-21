@@ -19,6 +19,9 @@ public class Truck extends Vehicle {
         this.tonnage = tonnage;
     }
 
+    public Truck(String code, String nameProduct, String price) {
+    }
+
     public String getTonnage() {
         return tonnage;
     }
