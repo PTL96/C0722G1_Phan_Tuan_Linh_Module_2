@@ -46,6 +46,38 @@ public class TeacherSevice implements ITeacherSevice {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
         }
     }
+    @Override
+    public void searchNameTeacher() {
+        int count = 0;
+        System.out.println("Vui lòng nhập ký tự có trong tên hoặc tên Giáo Viên muốn tìm");
+        String name = scanner.nextLine();
+        for (Teacher teacher : teacherList) {
+            if (teacher.getName().contains(name)) {
+                System.out.println(teacher);
+                count++;
+            }
+        }
+        if (count < 0) {
+            System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + name);
+        }
+    }
+
+    @Override
+    public void searchIdTeacher() {
+        int count = 0;
+        System.out.println("Vui lòng nhập ID Giáo Viên muốn tìm");
+        String id = scanner.nextLine();
+        for (Teacher teacher : teacherList) {
+            if (teacher.getCode().equals(id)) {
+                System.out.println(teacher);
+                count++;
+            }
+        }
+        if (count < 0) {
+            System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + id);
+        }
+
+    }
 
     public Teacher infoTeacher() {
         System.out.println("Mời bạn nhập mã giáo viên");

@@ -83,6 +83,7 @@ public class Product_Sevice implements IProduct {
 
     @Override
     public void sortProduct() {
+        System.out.println("Sắp xếp theo giá thành công, vui lòng ấn phím 1 để hiển thị lại danh sách");
         int choice = Integer.parseInt(scanner.nextLine());
         productList.sort(new Comparator<Product>() {
             @Override

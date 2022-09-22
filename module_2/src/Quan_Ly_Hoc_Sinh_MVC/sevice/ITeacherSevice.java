@@ -6,4 +6,8 @@ public interface ITeacherSevice {
     void displayAllTeacher();
 
     void removeTeacher();
+
+    void searchNameTeacher();
+
+    void searchIdTeacher();
 }

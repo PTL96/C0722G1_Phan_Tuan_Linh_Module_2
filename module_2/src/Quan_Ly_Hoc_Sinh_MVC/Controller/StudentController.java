@@ -11,12 +11,13 @@ public class StudentController {
 
     public static void menuStudent() {
         while (true) {
-            System.out.println("-----------------------------------------------------------");
-            System.out.println("Chào mừng bạn đến với chương trình quản lý CodeGym");
+            System.out.println("*************** - CHƯƠNG TRÌNH QUẢN LÝ HỌC VIÊN - *************");
             System.out.println("1. Thêm mới học sinh");
             System.out.println("2. Hiển thị danh sách học sinh");
-            System.out.println("3. Xóa học sinh");
-            System.out.println("4. Thoát");
+            System.out.println("3. Tìm kiếm học sinh theo ID");
+            System.out.println("4. Tìm kiếm học sinh theo Tên ");
+            System.out.println("5. Xóa học sinh");
+            System.out.println("6. Thoát");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -26,10 +27,15 @@ public class StudentController {
                     iStudentService.displayAllStudent();
                     break;
                 case 3:
-                    iStudentService.removeStudent();
+                    iStudentService.searchIdStudent();
                     break;
                 case 4:
-//                    System.exit(0);
+                    iStudentService.searchNameStudent();
+                    break;
+                case 5:
+                    iStudentService.removeStudent();
+                    break;
+                case 6:
                     return;
             }
         }

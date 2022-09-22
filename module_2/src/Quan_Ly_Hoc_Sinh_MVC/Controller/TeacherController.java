@@ -11,12 +11,13 @@ public class TeacherController {
 
     public static void menuTeacher() {
         while (true) {
-            System.out.println("-----------------------------------------------------------");
-            System.out.println("Chào mừng bạn đến với chương trình quản lý CodeGym");
+            System.out.println("************** - CHƯƠNG TRÌNH QUẢN LÝ GIÁO VIÊN - *************");
             System.out.println("1. Thêm mới giáo viên");
             System.out.println("2. Hiển thị danh sách giáo viên");
-            System.out.println("3. Xóa giáo viên");
-            System.out.println("4. Thoát");
+            System.out.println("3. Tìm kiếm giáo viên theo ID");
+            System.out.println("4. Tìm kiếm giáo viên theo tên");
+            System.out.println("5. Xóa giáo viên");
+            System.out.println("6. Thoát");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -26,10 +27,15 @@ public class TeacherController {
                     iTeacherSevice.displayAllTeacher();
                     break;
                 case 3:
-                    iTeacherSevice.removeTeacher();
+                    iTeacherSevice.searchIdTeacher();
                     break;
                 case 4:
-//                    System.exit(0);
+                    iTeacherSevice.searchNameTeacher();
+                    break;
+                case 5:
+                    iTeacherSevice.removeTeacher();
+                    break;
+                case 6:
                     return;
             }
         }

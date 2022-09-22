@@ -6,4 +6,8 @@ public interface IStudentSevice {
     void displayAllStudent();
 
     void removeStudent();
+
+    void searchNameStudent();
+
+    void searchIdStudent();
 }

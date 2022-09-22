@@ -23,7 +23,6 @@ public class Managercontroller {
                 case 2:
                     StudentController.menuStudent();
                     break;
-
                 case 3:
                     return;
             }

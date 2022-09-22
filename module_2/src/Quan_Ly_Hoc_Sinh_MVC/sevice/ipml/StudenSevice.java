@@ -11,6 +11,7 @@ public class StudenSevice implements IStudentSevice {
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Student> studentList = new ArrayList<>();
 
+
     @Override
     public void addStudent() {
         Student student = this.infoStudent();
@@ -48,8 +49,41 @@ public class StudenSevice implements IStudentSevice {
         }
     }
 
+    @Override
+    public void searchNameStudent() {
+            int count = 0;
+            System.out.println("Vui lòng nhập ký tự có trong tên hoặc tên học sinh muốn tìm");
+            String name = scanner.nextLine();
+            for (Student student : studentList) {
+                if (student.getName().contains(name)) {
+                    System.out.println(student);
+                    count++;
+                }
+            }
+            if (count < 0) {
+                System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + name);
+            }
+        }
 
-    public Student infoStudent() {
+    @Override
+    public void searchIdStudent() {
+        int count = 0;
+        System.out.println("Vui lòng nhập ID học sinh muốn tìm");
+        String id = scanner.nextLine();
+        for (Student student : studentList) {
+            if (student.getCode().equals(id)) {
+                System.out.println(student);
+                count++;
+            }
+        }
+        if (count < 0) {
+            System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + id);
+        }
+
+    }
+
+
+    public Quan_Ly_Hoc_Sinh_MVC.Model.Student infoStudent() {
         System.out.print("Mời bạn nhập mã học sinh: ");
         String code = scanner.nextLine();
         System.out.print("Mời bạn nhập tên học sinh: ");
@@ -68,8 +102,8 @@ public class StudenSevice implements IStudentSevice {
         String nameClass = scanner.nextLine();
         System.out.print("Mời bạn nhập điểm của học sinh: ");
         double score = Double.parseDouble(scanner.nextLine());
-        Student student;
-        student = new Student(code,name,gender,nameClass,score);
+        Quan_Ly_Hoc_Sinh_MVC.Model.Student student;
+        student = new Quan_Ly_Hoc_Sinh_MVC.Model.Student(code,name,gender,nameClass,score);
         return student;
 
     }
