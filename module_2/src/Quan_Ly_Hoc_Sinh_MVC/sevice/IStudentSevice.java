@@ -10,4 +10,9 @@ public interface IStudentSevice {
     void searchNameStudent();
 
     void searchIdStudent();
+
+    void sortNameStudent();
+
+    void fakeDisplayStudent();
+
 }

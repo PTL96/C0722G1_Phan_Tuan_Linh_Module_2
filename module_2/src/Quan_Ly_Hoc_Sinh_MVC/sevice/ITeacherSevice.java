@@ -10,4 +10,8 @@ public interface ITeacherSevice {
     void searchNameTeacher();
 
     void searchIdTeacher();
+
+    void sortNameTeacher();
+
+    void fakeNameTeacher();
 }

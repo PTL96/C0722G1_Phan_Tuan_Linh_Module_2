@@ -10,7 +10,7 @@ public class Managercontroller {
 
     public static void menuManager() {
         while (true) {
-            System.out.println("-----------------------------------------------------------");
+            System.out.println("*********** - MENU QUẢN LÝ - ************");
             System.out.println("Chào mừng bạn đến với chương trình quản lý CodeGym");
             System.out.println("1. Giáo viên");
             System.out.println("2. Học sinh");

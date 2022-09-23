@@ -35,8 +35,8 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
 
         @Override
         public String toString() {
-            return "Student: " + " Mã học sinh "+getCode()+ ", Tên học sinh "+getName()+", Lớp "
-                    +getNameClass()+", Điểm "+getScore();
+            return "Student: " + " Mã học sinh: "+getCode()+ ", Tên học sinh: "+getName()+", Lớp: "
+                    +getNameClass()+", Điểm: "+getScore();
 
         }
     }
