@@ -2,6 +2,8 @@ package Quan_Ly_Hoc_Sinh_MVC.sevice.ipml;
 
 import Quan_Ly_Hoc_Sinh_MVC.Model.Teacher;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.ITeacherSevice;
+import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.NameException;
+import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.check;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,7 @@ public class TeacherSevice implements ITeacherSevice {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
         }
     }
+
     @Override
     public void searchNameTeacher() {
         int count = 0;
@@ -78,23 +81,24 @@ public class TeacherSevice implements ITeacherSevice {
         }
 
     }
+
     @Override
-    public void sortNameTeacher(){
+    public void sortNameTeacher() {
         boolean isSwap = true;
         Teacher teacher;
         for (int i = 0; i < teacherList.size() - 1 && isSwap; i++) {
             isSwap = false;
             for (int j = 0; j < teacherList.size() - 1 - i; j++) {
                 int compareName = teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName());
-                if ( compareName> 0) {
+                if (compareName > 0) {
                     isSwap = true;
                     teacher = teacherList.get(j + 1);
                     teacherList.set(j + 1, teacherList.get(j));
                     teacherList.set(j, teacher);
                 }
-                if (compareName==0){
-                    int compareId= teacherList.get(j).getCode().compareTo(teacherList.get(j + 1).getCode());
-                    if (compareId>0){
+                if (compareName == 0) {
+                    int compareId = teacherList.get(j).getCode().compareTo(teacherList.get(j + 1).getCode());
+                    if (compareId > 0) {
                         isSwap = true;
                         teacher = teacherList.get(j + 1);
                         teacherList.set(j + 1, teacherList.get(j));
@@ -109,35 +113,66 @@ public class TeacherSevice implements ITeacherSevice {
     @Override
     public void fakeNameTeacher() {
         System.out.println("Cập nhật danh sách giả lập thành công, vui lòng ấn 2 để hiển thị danh sách");
-        teacherList.add(new Teacher("CG1231","Trung DP",true,"GĐ đào tạo"));
-        teacherList.add(new Teacher("CG2233","Chánh TT",true,"Giảng viên"));
-        teacherList.add(new Teacher("CG3234","Công NT",true,"Giảng viên"));
-        teacherList.add(new Teacher("CG4234","Hải TT",true,"Coach"));
-        teacherList.add(new Teacher("CG5238","Quang NN",true,"Intructor"));
-        teacherList.add(new Teacher("CG6237","Trung DC",true,"Giảng viên"));
-        teacherList.add(new Teacher("CG7236","Tiến",true,"Giảng viên"));
+        teacherList.add(new Teacher("CG1231", "Trung DP", "Nam", "GĐ đào tạo"));
+        teacherList.add(new Teacher("CG2233", "Chánh TT", "Nam", "Giảng viên"));
+        teacherList.add(new Teacher("CG3234", "Công NT", "Nam", "Giảng viên"));
+        teacherList.add(new Teacher("CG4234", "Hải TT", "Nam", "Coach"));
+        teacherList.add(new Teacher("CG5238", "Quang NN", "Nữ", "Intructor"));
+        teacherList.add(new Teacher("CG6237", "Trung DC", "Nam", "Giảng viên"));
+        teacherList.add(new Teacher("CG7236", "Tiến", "Nữ", "Giảng viên"));
     }
 
 
     public Teacher infoTeacher() {
-        System.out.println("Mời bạn nhập mã giáo viên");
-        String code = scanner.nextLine();
-        System.out.println("Mời bạn nhập tên giáo viên");
-        String name = scanner.nextLine();
-        System.out.println("Mời bạn nhập giới giáo viên");
-        String temGender = scanner.nextLine();
-        Boolean gender;
-        if (temGender.equals(("Nam"))) {
-            gender = true;
-        } else if (temGender.equals("Nữ")) {
-            gender = false;
-        } else {
-            gender = null;
+        String code;
+        while (true) {
+            System.out.println("Mời bạn nhập mã giáo viên");
+            code = scanner.nextLine();
+            boolean check = false;
+            for (Teacher teacher : teacherList) {
+                if (teacher.getCode().equals(code)) {
+                    check = true;
+                    System.out.println("Mã này đã tồn tại");
+                }
+            }
+            if (!check) {
+                break;
+            }
+
+        }
+        String name = "";
+        while (true){
+            try {
+                System.out.print("Mời bạn nhập tên giáo viên ");
+                name = scanner.nextLine();
+                for (int i = 0; i <name.length() ; i++) {
+                    if(Character.isDigit(name.charAt(i))) {
+                        throw new NameException("Tên không được chứa số");
+                    }
+                }
+                break;
+            } catch (NameException e) {
+                System.out.println(e.getMessage());
+
+            }
+        }
+        String gender;
+        while (true) {
+            System.out.println("Nhập giới tính");
+            try {
+                gender = scanner.nextLine();
+                if(!(gender.equals("Nam") || gender.equals("Nữ"))) {
+                    throw new check("Giới tính không hợp lệ");
+                }
+                break;
+            } catch (check e) {
+                System.out.println(e.getMessage());
+            }
         }
         System.out.println("Mời bạn nhập chuyên môn");
         String nameSpecialize = scanner.nextLine();
         Teacher teacher;
-        teacher = new Teacher(code,name,gender,nameSpecialize);
+        teacher = new Teacher(code, name, gender, nameSpecialize);
         return teacher;
     }
 

@@ -3,9 +3,9 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
 public abstract class Person {
         private String code;
         private String name;
-        private Boolean gender;
+        private String gender;
 
-        public Person(String code, String name, Boolean gender) {
+        public Person(String code, String name, String gender) {
             this.code = code;
             this.name = name;
             this.gender = gender;
@@ -30,11 +30,11 @@ public abstract class Person {
             this.name = name;
         }
 
-        public Boolean getGender() {
+        public String getGender() {
             return gender;
         }
 
-        public void setGender(Boolean gender) {
+        public void setGender(String gender) {
             this.gender = gender;
         }
 

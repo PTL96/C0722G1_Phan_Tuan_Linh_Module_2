@@ -3,10 +3,7 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
         private String nameClass;
         private double score;
 
-        public Student(String code, String name, Boolean gender, String nameClass, double score) {
-            super(code, name, gender);
-            this.nameClass = nameClass;
-            this.score = score;
+        public Student() {
         }
 
         public Student(String nameClass, double score) {
@@ -14,7 +11,10 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
             this.score = score;
         }
 
-        public Student() {
+        public Student(String code, String name, String gender, String nameClass, double score) {
+            super(code, name, gender);
+            this.nameClass = nameClass;
+            this.score = score;
         }
 
         public String getNameClass() {
@@ -35,8 +35,8 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
 
         @Override
         public String toString() {
-            return "Student: " + " Mã học sinh: "+getCode()+ ", Tên học sinh: "+getName()+", Lớp: "
-                    +getNameClass()+", Điểm: "+getScore();
+            return "Học sinh: " +"Mã học sinh: "+getCode()+", Tên học sinh: "+ getName()+", Giới tính: "
+                    +getGender()+", Điểm: "+getScore();
 
         }
     }

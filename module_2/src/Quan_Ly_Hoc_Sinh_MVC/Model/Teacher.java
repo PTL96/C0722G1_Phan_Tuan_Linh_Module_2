@@ -3,14 +3,14 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
 public class Teacher extends Person {
     private String specialize;
 
-    public Teacher(String code, String name, Boolean gender) {
+    public Teacher(String code, String name, String gender) {
         super(code, name, gender);
     }
 
     public Teacher() {
     }
 
-    public Teacher(String code, String name, Boolean gender, String specialize) {
+    public Teacher(String code, String name, String gender, String specialize) {
         super(code, name, gender);
         this.specialize = specialize;
     }
