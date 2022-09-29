@@ -3,13 +3,14 @@ package Quan_Ly_Hoc_Sinh_MVC.Controller;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.ITeacherSevice;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.ipml.TeacherSevice;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TeacherController {
     private static final ITeacherSevice iTeacherSevice = new TeacherSevice();
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void menuTeacher() {
+    public static void menuTeacher() throws IOException {
         while (true) {
             System.out.println("************** - CHƯƠNG TRÌNH QUẢN LÝ GIÁO VIÊN - *************");
             System.out.println("1. Thêm mới giáo viên");

@@ -1,17 +1,19 @@
 package Quan_Ly_Hoc_Sinh_MVC.sevice;
 
+import java.io.IOException;
+
 public interface ITeacherSevice {
-    void addTeacher();
+    void addTeacher() throws IOException;
 
-    void displayAllTeacher();
+    void displayAllTeacher() throws IOException;
 
-    void removeTeacher();
+    void removeTeacher() throws IOException;
 
     void searchNameTeacher();
 
     void searchIdTeacher();
 
-    void sortNameTeacher();
+    void sortNameTeacher() throws IOException;
 
     void fakeNameTeacher();
 }

@@ -14,24 +14,26 @@ import java.util.Scanner;
 
 public class TeacherSevice implements ITeacherSevice {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Teacher> teacherList = new ArrayList<>();
+    private static List<Teacher> teacherList = new ArrayList<>();
 
     @Override
-    public void addTeacher() {
+    public void addTeacher() throws IOException {
         Teacher teacher = this.infoTeacher();
         teacherList.add(teacher);
         System.out.println("Thêm mới thành công");
+        writeTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv",teacherList);
     }
 
     @Override
-    public void displayAllTeacher() {
+    public void displayAllTeacher() throws IOException {
+        teacherList = readTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv");
         for (Teacher teacher : teacherList) {
             System.out.println(teacher);
         }
     }
 
     @Override
-    public void removeTeacher() {
+    public void removeTeacher() throws IOException {
         System.out.println("Mời bạn nhập mã giáo viên cần xóa: ");
         String code = scanner.nextLine();
         boolean flagDelete = false;
@@ -50,6 +52,7 @@ public class TeacherSevice implements ITeacherSevice {
         if (!flagDelete) {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
         }
+        writeTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv",teacherList);
     }
 
     @Override
@@ -64,7 +67,7 @@ public class TeacherSevice implements ITeacherSevice {
             }
         }
         if (count < 0) {
-            System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + name);
+            System.out.println("Không có ký tự cần tìm kiếm trong Menu" + name);
         }
     }
 
@@ -80,13 +83,13 @@ public class TeacherSevice implements ITeacherSevice {
             }
         }
         if (count < 0) {
-            System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + id);
+            System.out.println("Không có ID cần tìm kiếm trong Menu" + id);
         }
 
     }
 
     @Override
-    public void sortNameTeacher() {
+    public void sortNameTeacher() throws IOException {
         boolean isSwap = true;
         Teacher teacher;
         for (int i = 0; i < teacherList.size() - 1 && isSwap; i++) {
@@ -110,7 +113,8 @@ public class TeacherSevice implements ITeacherSevice {
                 }
             }
         }
-        displayAllTeacher();
+//        displayAllTeacher();
+        writeTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv",teacherList);
     }
 
     @Override
