@@ -3,13 +3,14 @@ package Quan_Ly_Hoc_Sinh_MVC.Controller;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.IStudentSevice;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.ipml.StudenSevice;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class StudentController {
     private static final IStudentSevice iStudentService = new StudenSevice();
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void menuStudent() {
+    public static void menuStudent() throws IOException {
         while (true) {
             System.out.println("*************** - CHƯƠNG TRÌNH QUẢN LÝ HỌC VIÊN - *************");
             System.out.println("1. Thêm mới học sinh");

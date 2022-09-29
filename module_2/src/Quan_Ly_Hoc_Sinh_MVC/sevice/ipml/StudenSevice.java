@@ -1,36 +1,44 @@
 package Quan_Ly_Hoc_Sinh_MVC.sevice.ipml;
 
 import Quan_Ly_Hoc_Sinh_MVC.Model.Student;
+import Quan_Ly_Hoc_Sinh_MVC.Utils.ReadFile;
+import Quan_Ly_Hoc_Sinh_MVC.Utils.WriteFile;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.IStudentSevice;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.NameException;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.ScoresException;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.check;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class StudenSevice implements IStudentSevice {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Student> studentList = new ArrayList<>();
+    private static List<Student> studentList = new ArrayList<>();
 
 
     @Override
-    public void addStudent() {
+    public void addStudent() throws IOException {
         Student student = this.infoStudent();
         studentList.add(student);
         System.out.println("Thêm mới thành công");
+        writeStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv",studentList);
     }
 
     @Override
-    public void displayAllStudent() {
-        for (Student student : studentList) {
+    public void displayAllStudent() throws IOException {
+    studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
+
+        for (Student student: studentList
+             ) {
             System.out.println(student);
         }
+
     }
 
     @Override
-    public void removeStudent() {
+    public void removeStudent() throws IOException {
         System.out.print("Mời bạn nhập mã học sinh cần xóa: ");
         String code = scanner.nextLine();
         boolean flagDelete = false;
@@ -49,6 +57,7 @@ public class StudenSevice implements IStudentSevice {
         if (!flagDelete) {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
         }
+        writeStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv",studentList);
     }
 
     @Override
@@ -85,7 +94,7 @@ public class StudenSevice implements IStudentSevice {
     }
 
     @Override
-    public void sortNameStudent() {
+    public void sortNameStudent() throws IOException {
         boolean isSwap = true;
         Student student;
         for (int i = 0; i < studentList.size() - 1 && isSwap; i++) {
@@ -110,9 +119,11 @@ public class StudenSevice implements IStudentSevice {
             }
         }
         displayAllStudent();
+        writeStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv",studentList);
     }
 
     @Override
+
     public void fakeDisplayStudent() {
         System.out.println("Cập nhật danh sách giả lập thành công, vui lòng ấn 2 để hiển thị danh sách");
         studentList.add(new Student("CG123", "Bảo", "Nam", "C07", 6));
@@ -197,5 +208,26 @@ public class StudenSevice implements IStudentSevice {
     }
 
 
+    public static List<Student> readStudentFile(String path) throws IOException {
+        List<String> strings = ReadFile.readFile(path);
+        List<Student> students = new ArrayList<>();
+
+        String[] info;
+        for (String line : strings) {
+            info = line.split(",");
+            if (info.length == 5) {
+                students.add(new Student(info[0], info[1], info[2], info[3], Double.parseDouble(info[4])));
+            }
+        }
+        return students;
+    }
+    public static void writeStudentFile(String path, List<Student> students) throws IOException {
+        String data = "";
+        for (Student student : students) {
+            data += student.toString();
+            data += "\n";
+        }
+        WriteFile.writeFile(path, data);
+    }
 }
 

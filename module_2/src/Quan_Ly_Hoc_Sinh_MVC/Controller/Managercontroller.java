@@ -1,5 +1,6 @@
 package Quan_Ly_Hoc_Sinh_MVC.Controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Managercontroller {
@@ -8,7 +9,7 @@ public class Managercontroller {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void menuManager() {
+    public static void menuManager() throws IOException {
         while (true) {
             System.out.println("*********** - MENU QUẢN LÝ - ************");
             System.out.println("Chào mừng bạn đến với chương trình quản lý CodeGym");

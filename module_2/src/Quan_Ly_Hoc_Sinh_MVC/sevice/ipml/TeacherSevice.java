@@ -1,10 +1,13 @@
 package Quan_Ly_Hoc_Sinh_MVC.sevice.ipml;
 
 import Quan_Ly_Hoc_Sinh_MVC.Model.Teacher;
+import Quan_Ly_Hoc_Sinh_MVC.Utils.ReadFile;
+import Quan_Ly_Hoc_Sinh_MVC.Utils.WriteFile;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.ITeacherSevice;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.NameException;
 import Quan_Ly_Hoc_Sinh_MVC.sevice.exception.check;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -171,9 +174,32 @@ public class TeacherSevice implements ITeacherSevice {
         }
         System.out.println("Mời bạn nhập chuyên môn");
         String nameSpecialize = scanner.nextLine();
-        Teacher teacher;
-        teacher = new Teacher(code, name, gender, nameSpecialize);
+        Teacher teachers;
+        teachers = new Teacher(code, name, gender, nameSpecialize);
+        return teachers;
+    }
+    public static List<Teacher> readTeacherFile(String path) throws IOException {
+        List<String> strings = ReadFile.readFile(path);
+        List<Teacher> teacher = new ArrayList<>();
+
+        String[] info;
+        for (String line : strings) {
+            info = line.split(",");
+            if (info.length == 4) {
+                teacher.add(new Teacher(info[0], info[1], info[2], info[3]));
+            }
+        }
         return teacher;
     }
-
+    public static void writeTeacherFile(String path, List<Teacher> teachers) throws IOException {
+        String data = "";
+        for (Teacher teacher : teachers) {
+            data += teacher.toString();
+            data += "\n";
+        }
+        WriteFile.writeFile(path, data);
+    }
 }
+
+
+
