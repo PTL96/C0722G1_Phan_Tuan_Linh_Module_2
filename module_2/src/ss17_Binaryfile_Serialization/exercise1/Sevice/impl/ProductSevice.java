@@ -1,30 +1,41 @@
-package ss12_Map_Tree.Sevice.impl;
+package ss17_Binaryfile_Serialization.exercise1.Sevice.impl;
 
-import ss12_Map_Tree.Model.Product;
-import ss12_Map_Tree.Sevice.IProduct;
+import Quan_Ly_Hoc_Sinh_MVC.Utils.ReadFile;
+import Quan_Ly_Hoc_Sinh_MVC.Utils.WriteFile;
+import ss17_Binaryfile_Serialization.exercise1.Model.Product;
+import ss17_Binaryfile_Serialization.exercise1.Sevice.IProduct;
 
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 
-public class Product_Sevice implements IProduct {
+public class ProductSevice implements IProduct {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Product> productList = new ArrayList<>();
+    private static List<Product> productList = new ArrayList<>();
 
     @Override
-    public void addProduct() {
+    public void addProduct() throws IOException {
+        productList = readProductFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv");
         Product product = this.infoProduct();
         productList.add(product);
         System.out.println("Thêm mới thành công");
+        writeStudentFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv", productList);
     }
 
     @Override
-    public void displayAllProduct() {
+    public void displayAllProduct() throws IOException {
+
+        productList = readProductFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv");
         for (Product product : productList) {
             System.out.println(product);
         }
     }
 
     @Override
-    public void removeProduct() {
+    public void removeProduct() throws IOException {
+        productList = readProductFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv");
         System.out.println("Mời bạn nhập mã sản phẩm cần xóa ");
         String code = scanner.nextLine();
         boolean flagDelete = false;
@@ -43,10 +54,12 @@ public class Product_Sevice implements IProduct {
         if (!flagDelete) {
             System.out.println("Không tìm thấy mã cần xóa.");
         }
+        writeStudentFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv", productList);
     }
 
     @Override
-    public void editProduct() {
+    public void editProduct() throws IOException {
+        productList = readProductFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv");
         System.out.println("Mời bạn nhập mã sản phẩm cần sửa: ");
         String code = scanner.nextLine();
         boolean isExisted = false;
@@ -56,17 +69,18 @@ public class Product_Sevice implements IProduct {
                 isExisted = true;
                 productList.set(i, this.infoProduct());
                 System.out.println("Cập nhật thông tin thành công");
-                break;
             }
 
         }
         if (!isExisted) {
             System.out.println("Mã sản phẩm này không tồn tại, vui lòng nhập lại");
         }
+        writeStudentFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv", productList);
     }
 
     @Override
-    public void searchProduct() {
+    public void searchProduct() throws IOException {
+        productList = readProductFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv");
         int count = 0;
         System.out.println("Vui lòng nhập mã sản phẩm muốn tìm kiếm");
         String name = scanner.nextLine();
@@ -82,7 +96,8 @@ public class Product_Sevice implements IProduct {
     }
 
     @Override
-    public void sortProduct() {
+    public void sortProduct() throws IOException {
+        productList = readProductFile("module_2/src/ss17_Binaryfile_Serialization/exercise1/Data/Product.csv");
         System.out.println("Sắp xếp theo giá thành công, vui lòng ấn phím 1 để hiển thị lại danh sách");
         int choice = Integer.parseInt(scanner.nextLine());
         productList.sort(new Comparator<Product>() {
@@ -90,13 +105,13 @@ public class Product_Sevice implements IProduct {
             public int compare(Product o1, Product o2) {
                 if (o1.getPrice() > o2.getPrice()) {
                     return 1;
-
                 } else if (o1.getPrice() == o2.getPrice()) {
                     return 0;
                 } else {
                     return -1;
                 }
             }
+
         });
         for (Product product : productList) {
             System.out.println(product);
@@ -108,11 +123,40 @@ public class Product_Sevice implements IProduct {
         String code = scanner.nextLine();
         System.out.println("Mời bạn nhập tên sản phẩm");
         String nameProduct = scanner.nextLine();
+        System.out.println("Mời bạn nhập hãng sản xuất");
+        String manufacturer = scanner.nextLine();
         System.out.println("Mời bạn nhập giá sản phẩm");
         int price = Integer.parseInt(scanner.nextLine());
+        System.out.println("Ghi chú");
+        String other = scanner.nextLine();
         Product product;
-        product = new Product(code, nameProduct, (double) price);
+        product = new Product(code, nameProduct, (double) price, other);
         return product;
     }
 
+    public static List<Product> readProductFile(String path) throws IOException {
+        List<String> strings = ReadFile.readFile(path);
+        List<Product> products = new ArrayList<>();
+
+        String[] info;
+        for (String line : strings) {
+            info = line.split(",");
+            if (info.length == 5) {
+                products.add(new Product(info[0], info[1], info[2], Double.parseDouble(info[3]), info[4]));
+            }
+        }
+        return products;
+    }
+
+    public static void writeStudentFile(String path, List<Product> products) throws IOException {
+        String data = "";
+        for (Product product : products) {
+            data += product.toString();
+            data += "\n";
+        }
+        WriteFile.writeFile(path, data);
+    }
+
+
 }
+

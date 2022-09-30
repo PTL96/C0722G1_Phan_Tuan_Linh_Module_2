@@ -3,7 +3,7 @@ package Quan_Ly_Hoc_Sinh_MVC.Model;
         private String nameClass;
         private double score;
 
-        public Student() {
+        public Student(String code, String name, String gender, double v, String s) {
         }
 
         public Student(String nameClass, double score) {
