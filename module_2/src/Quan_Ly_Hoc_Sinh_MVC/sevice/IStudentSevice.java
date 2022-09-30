@@ -9,12 +9,11 @@ public interface IStudentSevice {
 
     void removeStudent() throws IOException;
 
-    void searchNameStudent();
+    void searchNameStudent() throws IOException;
 
-    void searchIdStudent();
+    void searchIdStudent() throws IOException;
 
     void sortNameStudent() throws IOException;
 
-    void fakeDisplayStudent();
 
 }

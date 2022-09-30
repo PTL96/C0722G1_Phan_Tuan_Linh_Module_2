@@ -15,12 +15,11 @@ public class StudentController {
             System.out.println("*************** - CHƯƠNG TRÌNH QUẢN LÝ HỌC VIÊN - *************");
             System.out.println("1. Thêm mới học sinh");
             System.out.println("2. Hiển thị danh sách học sinh");
-            System.out.println("3. Hiển thị danh sách học sinh giả lập");
+            System.out.println("3. Xóa");
             System.out.println("4. Tìm kiếm học sinh theo ID");
             System.out.println("5. Tìm kiếm học sinh theo Name");
             System.out.println("6. Sắp xếp học sinh");
-            System.out.println("7. Xóa học sinh");
-            System.out.println("8. Thoát");
+            System.out.println("7. Thoát");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -30,7 +29,7 @@ public class StudentController {
                     iStudentService.displayAllStudent();
                     break;
                 case 3:
-                    iStudentService.fakeDisplayStudent();
+                    iStudentService.removeStudent();
                     break;
                 case 4:
                     iStudentService.searchIdStudent();
@@ -42,9 +41,6 @@ public class StudentController {
                     iStudentService.sortNameStudent();
                     break;
                 case 7:
-                    iStudentService.removeStudent();
-                    break;
-                case 8:
                     return;
             }
         }

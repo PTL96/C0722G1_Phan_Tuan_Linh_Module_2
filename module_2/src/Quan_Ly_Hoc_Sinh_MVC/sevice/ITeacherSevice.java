@@ -9,11 +9,10 @@ public interface ITeacherSevice {
 
     void removeTeacher() throws IOException;
 
-    void searchNameTeacher();
+    void searchNameTeacher() throws IOException;
 
-    void searchIdTeacher();
+    void searchIdTeacher() throws IOException;
 
     void sortNameTeacher() throws IOException;
 
-    void fakeNameTeacher();
 }

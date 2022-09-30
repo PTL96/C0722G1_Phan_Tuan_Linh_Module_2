@@ -52,11 +52,12 @@ public class TeacherSevice implements ITeacherSevice {
         if (!flagDelete) {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
         }
+        teacherList = readTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv");
         writeTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv",teacherList);
     }
 
     @Override
-    public void searchNameTeacher() {
+    public void searchNameTeacher() throws IOException {
         int count = 0;
         System.out.println("Vui lòng nhập ký tự có trong tên hoặc tên Giáo Viên muốn tìm");
         String name = scanner.nextLine();
@@ -69,10 +70,11 @@ public class TeacherSevice implements ITeacherSevice {
         if (count < 0) {
             System.out.println("Không có ký tự cần tìm kiếm trong Menu" + name);
         }
+        teacherList = readTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv");
     }
 
     @Override
-    public void searchIdTeacher() {
+    public void searchIdTeacher() throws IOException {
         int count = 0;
         System.out.println("Vui lòng nhập ID Giáo Viên muốn tìm");
         String id = scanner.nextLine();
@@ -85,6 +87,7 @@ public class TeacherSevice implements ITeacherSevice {
         if (count < 0) {
             System.out.println("Không có ID cần tìm kiếm trong Menu" + id);
         }
+        teacherList = readTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv");
 
     }
 
@@ -113,22 +116,10 @@ public class TeacherSevice implements ITeacherSevice {
                 }
             }
         }
-//        displayAllTeacher();
+        teacherList = readTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv");
         writeTeacherFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Teacher.csv",teacherList);
+        displayAllTeacher();
     }
-
-    @Override
-    public void fakeNameTeacher() {
-        System.out.println("Cập nhật danh sách giả lập thành công, vui lòng ấn 2 để hiển thị danh sách");
-        teacherList.add(new Teacher("CG1231", "Trung DP", "Nam", "GĐ đào tạo"));
-        teacherList.add(new Teacher("CG2233", "Chánh TT", "Nam", "Giảng viên"));
-        teacherList.add(new Teacher("CG3234", "Công NT", "Nam", "Giảng viên"));
-        teacherList.add(new Teacher("CG4234", "Hải TT", "Nam", "Coach"));
-        teacherList.add(new Teacher("CG5238", "Quang NN", "Nữ", "Intructor"));
-        teacherList.add(new Teacher("CG6237", "Trung DC", "Nam", "Giảng viên"));
-        teacherList.add(new Teacher("CG7236", "Tiến", "Nữ", "Giảng viên"));
-    }
-
 
     public Teacher infoTeacher() {
         String code;

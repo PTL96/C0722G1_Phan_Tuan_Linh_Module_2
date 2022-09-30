@@ -23,13 +23,13 @@ public class StudenSevice implements IStudentSevice {
         Student student = this.infoStudent();
         studentList.add(student);
         System.out.println("Thêm mới thành công");
+        studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
         writeStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv",studentList);
     }
 
     @Override
     public void displayAllStudent() throws IOException {
     studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
-
         for (Student student: studentList
              ) {
             System.out.println(student);
@@ -57,11 +57,12 @@ public class StudenSevice implements IStudentSevice {
         if (!flagDelete) {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
         }
+        studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
         writeStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv",studentList);
     }
 
     @Override
-    public void searchNameStudent() {
+    public void searchNameStudent() throws IOException {
         int count = 0;
         System.out.println("Vui lòng nhập ký tự có trong tên hoặc tên học sinh muốn tìm");
         String name = scanner.nextLine();
@@ -74,10 +75,11 @@ public class StudenSevice implements IStudentSevice {
         if (count < 0) {
             System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + name);
         }
+        studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
     }
 
     @Override
-    public void searchIdStudent() {
+    public void searchIdStudent() throws IOException {
         int count = 0;
         System.out.println("Vui lòng nhập ID học sinh muốn tìm");
         String id = scanner.nextLine();
@@ -90,6 +92,7 @@ public class StudenSevice implements IStudentSevice {
         if (count < 0) {
             System.out.println("Không có sản phẩm cần tìm kiếm trong Menu" + id);
         }
+        studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
 
     }
 
@@ -118,21 +121,9 @@ public class StudenSevice implements IStudentSevice {
                 }
             }
         }
-        displayAllStudent();
+        studentList = readStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv");
         writeStudentFile("module_2/src/Quan_Ly_Hoc_Sinh_MVC/Data/Student.csv",studentList);
-    }
-
-    @Override
-
-    public void fakeDisplayStudent() {
-        System.out.println("Cập nhật danh sách giả lập thành công, vui lòng ấn 2 để hiển thị danh sách");
-        studentList.add(new Student("CG123", "Bảo", "Nam", "C07", 6));
-        studentList.add(new Student("CG223", "Linh", "Nam", "C07", 7));
-        studentList.add(new Student("CG323", "Tân", "Nam", "C07", 8));
-        studentList.add(new Student("CG423", "Phương", "Nữ", "C07", 6));
-        studentList.add(new Student("CG523", "Sang", "Nam", "C07", 8));
-        studentList.add(new Student("CG623", "Đạt", "Nữ", "C07", 8));
-        studentList.add(new Student("CG723", "Khánh", "Nam", "C07", 7));
+        displayAllStudent();
     }
 
     public Student infoStudent() {

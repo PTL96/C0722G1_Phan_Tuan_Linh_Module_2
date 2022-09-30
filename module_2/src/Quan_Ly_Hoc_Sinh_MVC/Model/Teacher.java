@@ -9,7 +9,7 @@ public class Teacher extends Person {
 
     public Teacher() {
     }
-
+    
     public Teacher(String code, String name, String gender, String specialize) {
         super(code, name, gender);
         this.specialize = specialize;
@@ -29,7 +29,7 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return "Teacher: " +"Mã giáo viên: "+getCode()+", Tên giáo viên: "+ getName()+", Giới tính: "
+          return "Giáo viên: " +"Mã giáo viên: "+getCode()+", Tên giáo viên: "+ getName()+", Giới tính: "
                 +getGender()+", Chuyên ngành: "+getSpecialize();
 
     }
